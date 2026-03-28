@@ -96,7 +96,9 @@ res.locals.currUser=req.user;
 next();
 })
 
-
+app.get("/", (req, res) => {
+  res.redirect("/listings");
+});
 //All Express Routers==========
 app.use("/listings",listingRouter);
 app.use("/listings/:id/reviews",reviewRouter);
