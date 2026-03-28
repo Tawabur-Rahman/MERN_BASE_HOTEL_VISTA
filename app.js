@@ -7,6 +7,7 @@ require('dotenv').config()
 
 
 
+const ExpressError=require("./utils/expressError.js")
 const session = require('express-session')
 const MongoStore = require('connect-mongo');
 const flash = require('connect-flash');
@@ -109,11 +110,17 @@ next(new ExpressError(404,"Page not found"))
 
 
 //Error Handel=================
-app.use((err,req,res,next)=>{
-let{status=500,message="Something Was Wrong !"}=err;
-res.status(status).render("error.ejs",{message})
-})
+// app.use((err,req,res,next)=>{
+// let{status=500,message="Something Was Wrong !"}=err;
+// res.status(status).render("error.ejs",{message})
+// })
 
+app.use((err,req,res,next)=>{
+  console.log(" ERROR:", err); // 🔥 ADD THIS
+
+  let{status=500,message="Something Was Wrong !"}=err;
+  res.status(status).render("error.ejs",{message})
+})
 
 app.listen(8080,()=>{
 console.log("I am response ")

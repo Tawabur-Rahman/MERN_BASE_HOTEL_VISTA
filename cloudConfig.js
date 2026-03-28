@@ -11,7 +11,7 @@ const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
     folder: 'hotel_DEV',
-allowerdFormats:["png","jpg","jpeg"],
+allowedFormats:["png","jpg","jpeg"],
 },
 });
 module.exports={cloudinary,storage};
